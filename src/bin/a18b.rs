@@ -51,7 +51,7 @@ impl  Employee {
             EmployeeRole::MaintenanceCrew | EmployeeRole::Managers | EmployeeRole::MarketingDept => {
                 match self.status {
                     EmployeeStatus::Employed => Ok(self),
-                    EmployeeStatus::Terminated => Err("Access terminated".to_owned())
+                    EmployeeStatus::Terminated => Err("statys terminated".to_owned())
                 }
             },
             _ => Err("Role not allowed".to_owned())
@@ -68,9 +68,12 @@ fn get_status () -> Result<(), String> {
 
     let erick_status = erick.check_status()?;
     println!("{:?}", erick_status);
-    Err("user not allowed".to_owned())
+    Ok(())
 } 
 
 fn main() {
-    get_status();
+    match get_status() {
+        Ok(()) => println!("access granted"),
+        Err(message) => println!("access denied : {}", message),
+    }
 }
