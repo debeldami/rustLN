@@ -202,19 +202,24 @@ impl MainMenu {
     }
 }
 
-fn main() {
+fn run_program() -> Option<()> {
     let mut bills = Bills::new();
 
     loop {
         MainMenu::show();
-        let input = get_input().expect("nothing entered");
+        let input = get_input()?;
 
         match MainMenu::add_str(input.as_str()) {
             Some(MainMenu::AddMenu) => menu::add_bill(&mut bills),
             Some(MainMenu::ViewMenu) => menu::view_all(&bills),
             Some(MainMenu::RemoveMenu) => menu::remove_bill(&mut bills),
             Some(MainMenu::UpdateMenu) => menu::update_bill(&mut bills),
-            None => return,
+            None => break,
         }
     }
+    None
+}
+
+fn main() {
+    run_program();
 }
