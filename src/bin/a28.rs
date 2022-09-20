@@ -9,7 +9,6 @@
 //   * Each new type should implement a `new` function
 // * Create a function for each type of clothes (shoes, shirt, pants)
 //   that accepts the new type specific to that type of clothing
-
 #[derive(Debug)]
 enum Color {
     Black,
