@@ -10,4 +10,6 @@ path = "src/lib/mod.rs"
 
 [dependencies]
 chrono = "0.4.22"
+colored = "2.0.0"
+crossbeam-channel = "0.5.6"
 thiserror = "1.0.33"
